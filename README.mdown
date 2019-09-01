@@ -16,7 +16,9 @@ Before run build will calculating hash sum and put it to 'outputDir' if it equal
 - Parameters:
 
 outputDir - directory for hash sum files
-nextGoals - mvn goal whom run if module modified
+
+nextGoals - mvn goal whom executes if module modified
+
 rootArtifact - root artifact whom contains in root pom.xml 
 
 
