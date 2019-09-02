@@ -7,7 +7,7 @@
 
     <groupId>finch</groupId>
     <artifactId>multimodule-build-maven-plugin</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>maven-plugin</packaging>
 
     <name>multimodule-build-maven-plugin Maven Plugin</name>

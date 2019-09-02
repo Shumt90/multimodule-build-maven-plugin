@@ -48,6 +48,12 @@ public class Main extends AbstractMojo {
         Path oldHash = Path.of(outputDirectory.getAbsolutePath(), artifactId + "-" + nextGoals + ".txt");
         Path newHash = Path.of(outputDirectory.getAbsolutePath(), artifactId + "-" + nextGoals + "-new.txt");
 
+        try {
+            if (!Files.exists(outputDirectory.toPath()))
+                Files.createDirectories(outputDirectory.toPath());
+        } catch (IOException e) {
+            throw new MojoFailureException(String.format("Can't create directory %s", outputDirectory), e);
+        }
         if (rootArtifact.equals(artifactId)) {
             runCommand();
         } else {
@@ -62,7 +68,7 @@ public class Main extends AbstractMojo {
                     FileUtils.copyFile(newHash.toFile(), oldHash.toFile());
                 }
             } catch (IOException e) {
-                getLog().error(String.format("Can't compare or copy files: %s, %s", oldHash, newHash), e);
+                throw new MojoFailureException(String.format("Can't compare or copy files: %s, %s", oldHash, newHash), e);
             }
         }
 
